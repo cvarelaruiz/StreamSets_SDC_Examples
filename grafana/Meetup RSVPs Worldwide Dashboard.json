@@ -1,0 +1,666 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "panels": [
+    {
+      "circleMaxSize": 30,
+      "circleMinSize": 2,
+      "colors": [
+        "#64b0c8",
+        "#0a50a1",
+        "#511749"
+      ],
+      "datasource": "PostgreSQL",
+      "decimals": 0,
+      "esMetric": "Count",
+      "gridPos": {
+        "h": 12,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "hideEmpty": true,
+      "hideZero": true,
+      "id": 2,
+      "initialZoom": "4",
+      "links": [],
+      "locationData": "table",
+      "mapCenter": "Europe",
+      "mapCenterLatitude": 46,
+      "mapCenterLongitude": 14,
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "group_city",
+        "latitudeField": "group_lat",
+        "longitudeField": "group_lon",
+        "metricField": "event_cnt",
+        "queryType": "coordinates"
+      },
+      "targets": [
+        {
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "mtime"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_city"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_lat"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_lon"
+              ],
+              "type": "column"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  mtime AS \"time\",\n  group_city,\n  group_lat,\n  group_lon,\n  count(event_id) AS \"event_cnt\"\nFROM rsvps_epoch\nWHERE\n  $__unixEpochFilter(mtime)\nGROUP BY mtime, group_city, group_lat, group_lon\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "group_city"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "group_lat"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "group_lon"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "event_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "event_cnt"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "rsvps_epoch",
+          "timeColumn": "mtime",
+          "timeColumnType": "int8",
+          "where": [
+            {
+              "name": "$__unixEpochFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": "3,6",
+      "title": "Meetup RSVPs Europe",
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "",
+      "unitSingle": "",
+      "valueName": "current"
+    },
+    {
+      "content": "# Krakow Meetup 2019\n\nThe Panels in this Dashboard display a sample of charts with data from the PostgreSQL database populate in real-time from StreamSets.\n\n\n",
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 9,
+        "y": 0
+      },
+      "id": 9,
+      "links": [],
+      "mode": "markdown",
+      "title": "Summary",
+      "type": "text"
+    },
+    {
+      "circleMaxSize": 30,
+      "circleMinSize": 2,
+      "colors": [
+        "#64b0c8",
+        "#0a50a1",
+        "#511749"
+      ],
+      "datasource": "PostgreSQL",
+      "decimals": 0,
+      "esMetric": "Count",
+      "gridPos": {
+        "h": 12,
+        "w": 9,
+        "x": 15,
+        "y": 0
+      },
+      "hideEmpty": true,
+      "hideZero": true,
+      "id": 5,
+      "initialZoom": "4",
+      "links": [],
+      "locationData": "table",
+      "mapCenter": "North America",
+      "mapCenterLatitude": 40,
+      "mapCenterLongitude": -100,
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "group_city",
+        "latitudeField": "group_lat",
+        "longitudeField": "group_lon",
+        "metricField": "event_cnt",
+        "queryType": "coordinates"
+      },
+      "targets": [
+        {
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "mtime"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_city"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_lat"
+              ],
+              "type": "column"
+            },
+            {
+              "params": [
+                "group_lon"
+              ],
+              "type": "column"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  mtime AS \"time\",\n  group_city,\n  group_lat,\n  group_lon,\n  count(event_id) AS \"event_cnt\"\nFROM rsvps_epoch\nWHERE\n  $__unixEpochFilter(mtime)\nGROUP BY mtime, group_city, group_lat, group_lon\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "group_city"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "group_lat"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "group_lon"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "event_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "event_cnt"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "rsvps_epoch",
+          "timeColumn": "mtime",
+          "timeColumnType": "int8",
+          "where": [
+            {
+              "name": "$__unixEpochFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": "3,6",
+      "title": "Meetup RSVPs N. America",
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "",
+      "unitSingle": "",
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "PostgreSQL",
+      "decimals": 0,
+      "description": "For selected Period",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 9,
+        "y": 5
+      },
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "RSVPs ",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__unixEpochGroupAlias(mtime,$__interval),\n  count(mtime) AS \"mtime\"\nFROM rsvps_epoch\nWHERE\n  $__unixEpochFilter(mtime)\nGROUP BY 1\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "mtime"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "mtime"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "rsvps_epoch",
+          "timeColumn": "mtime",
+          "timeColumnType": "int8",
+          "where": [
+            {
+              "name": "$__unixEpochFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": "20,40,90",
+      "title": "Current RSVPs",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "PostgreSQL",
+      "decimals": 0,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 4,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "'Total RSVPs'",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__unixEpochGroupAlias(mtime,$__interval),\n  'Total RSVPs' AS metric,\n  count(event_id) AS \"events\"\nFROM rsvps_epoch\nWHERE\n  $__unixEpochFilter(mtime)\nGROUP BY 1,2\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "event_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "events"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "rsvps_epoch",
+          "timeColumn": "mtime",
+          "timeColumnType": "int8",
+          "where": [
+            {
+              "name": "$__unixEpochFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "'RSVPd Yes'",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__unixEpochGroupAlias(mtime,$__interval),\n  'RSVPd Yes' AS metric,\n  count(event_id) AS \"events\"\nFROM rsvps_epoch\nWHERE\n  $__unixEpochFilter(mtime) AND\n  response = 'yes'\nGROUP BY 1,2\nORDER BY 1,2",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "event_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "events"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "rsvps_epoch",
+          "timeColumn": "mtime",
+          "timeColumnType": "int8",
+          "where": [
+            {
+              "name": "$__unixEpochFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "response",
+                "=",
+                "'yes'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "World Wide RSVPS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "2s",
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "2s",
+      " 5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Meetup RSVPs Worldwide",
+  "uid": "4q-I0QUik",
+  "version": 25
+}
