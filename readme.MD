@@ -44,7 +44,7 @@ Finally got the "Dashboards --> Manage" from the side panel, click the import bu
 
 ### Slide Deck
 
-The slide-deck with the explanation of this repo will be provided shortly.
+The slide-deck with the explanation of this repo can be found at the root of this project (PPTX File).
 
 ***
 Cristian Varela - 2019
